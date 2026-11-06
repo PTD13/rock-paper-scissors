@@ -1,11 +1,27 @@
-// write getComputerChoice() function
+function getComputerChoice() {
     // get random number between 1 to 3
+    const num = Math.floor(Math.random() * (3)) + 1;
     // return rock/paper/scissors based on the random number
+    switch (num) {
+        case 1:
+            return "rock";
+        case 2:
+            return "paper";
+        case 3:
+            return "scissors";
+        default:
+            console.log("error in computer choice");
+    }
+}
 
 // write getHumanChoice() function
+function getHumanChoice() {
     // get user input using prompt()
     // clean the user input
+    const userInput = prompt("Enter your choice!").trim().toLowerCase();
     // return the choice
+    return userInput;
+}
 
 // logic to play the game (5 rounds)
     // declare player scores variables 
