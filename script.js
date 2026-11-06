@@ -23,25 +23,71 @@ function getHumanChoice() {
     return userInput;
 }
 
-// logic to play the game (5 rounds)
-    // declare player scores variables 
-    // single round logic
+function playGame() {
+    // declare player scores variables
+    let humanScore = 0;
+    let computerScore = 0;
+ 
+    function playRound(humanChoice, computerChoice) {
         // write cases for player win
+        if (
+            (humanChoice === "rock" && computerChoice === "scissors") || 
+            (humanChoice === "paper" && computerChoice === "rock") || 
+            (humanChoice === "scissors" && computerChoice === "paper")
+        ) {
             // log the win message
+            console.log(`You win! ${humanChoice} beats ${computerChoice}`);
             // increment player score
+            humanScore++;
+            console.log(`Score: ${humanScore} - ${computerScore}`);
+            console.log("");
+        }
         // write cases for player loss
+        else if (
+            (humanChoice === "rock" && computerChoice === "paper") ||
+            (humanChoice === "paper" && computerChoice === "scissors") ||
+            (humanChoice === "scissors" && computerChoice === "rock")
+        ) {
             // log the loss message
+            console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
             // increment the computer score
+            computerScore++;
+            console.log(`Score: ${humanScore} - ${computerScore}`);
+            console.log("");
+        }
         // write cases for tie 
+        else if (humanChoice === computerChoice) {
             // log the tie message
+            console.log(`It is a tie! ${humanChoice} against ${computerChoice}`);
+            console.log(`Score: ${humanScore} - ${computerScore}`);
+            console.log("");
+        }
+    }
     
     // play the 5 rounds
+    for (let i = 0; i < 5; i++) {
         // get human and computer choices
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
         // call single round
+        playRound(humanChoice, computerChoice);
+    }   
     
     // compare the scores and declare winner
-        // player wins
-        // computer wins
-        // draw
+    // player wins
+    if (humanScore > computerScore) {
+        console.log(`You Win!! ${humanScore} - ${computerScore}`);
+    }
+    // computer wins
+    else if (computerScore > humanScore) {
+        console.log(`You Lose!! ${humanScore} - ${computerScore}`);
+    }
+    // draw
+    else {
+        console.log(`Draw!! ${humanScore} - ${computerScore}`);
+    }
+}
+    
 
 // play the game (call the function)
+playGame();
